@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Çekmeköy Projesi | Fırat İnşaat</title>
+
+<!-- Font Awesome -->
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+/>
+
+<style>
+/* =====================================
+   GENEL
+===================================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Times New Roman", Times, serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f5f3ee;
+    color:#333;
+}
+
+/* =====================================
+   RENKLER
+===================================== */
+:root{
+    --dark:#1C3026;
+    --dark2:#14231c;
+    --gold:#D4AF37;
+    --gold-light:#e7c75b;
+    --white:#ffffff;
+}
+
+/* =====================================
+   NAVBAR
+===================================== */
+.navbar{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:90%;
+    max-width:1100px;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 35px;
+    background:rgba(15,23,42,.55);
+    backdrop-filter:blur(15px) saturate(180%);
+    -webkit-backdrop-filter:blur(15px) saturate(180%);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:20px;
+    box-shadow:0 8px 32px rgba(0,0,0,.25);
+    z-index:1000;
+}
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:30px;
+    width:38%;
+}
+
+.nav-links.left{
+    justify-content:flex-start;
+}
+
+.nav-links.right{
+    justify-content:flex-end;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-size:.95rem;
+    font-weight:500;
+    text-shadow:0 2px 10px rgba(0,0,0,.4);
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:var(--gold);
+}
+
+.logo{
+    font-size:1.8rem;
+    font-weight:800;
+    color:white;
+    letter-spacing:3px;
+    white-space:nowrap;
+}
+
+/* =====================================
+   HERO
+===================================== */
+.hero{
+    min-height:55vh;
+    background:
+        linear-gradient(rgba(20,30,25,.72), rgba(20,30,25,.80)),
+        url("projekapak1.jpg") center/cover;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    text-align:center;
+    border-radius:0 0 35px 35px;
+    padding:120px 20px 60px;
+}
+
+.hero-content{
+    max-width:750px;
+}
+
+.hero small{
+    display:inline-block;
+    color:var(--gold-light);
+    font-size:1rem;
+    font-weight:600;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:clamp(2.5rem,6vw,4.5rem);
+    margin-bottom:20px;
+    letter-spacing:2px;
+}
+
+.hero p{
+    max-width:650px;
+    margin:auto;
+    font-size:1.1rem;
+    line-height:1.8;
+    color:#eee;
+}
+
+/* =====================================
+   PROJE BİLGİSİ
+===================================== */
+.project-info{
+    max-width:1000px;
+    margin:auto;
+    padding:90px 30px 60px;
+    text-align:center;
+}
+
+.project-info span{
+    color:var(--gold);
+    font-size:.9rem;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.project-info h2{
+    color:var(--dark);
+    font-size:2.5rem;
+    margin:10px 0 25px;
+}
+
+.project-info p{
+    max-width:750px;
+    margin:auto;
+    color:#666;
+    line-height:1.9;
+    font-size:1rem;
+}
+
+/* =====================================
+   GALERİ
+===================================== */
+.gallery-section{
+    max-width:1200px;
+    margin:auto;
+    padding:30px 30px 100px;
+}
+
+.gallery-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.gallery-title h2{
+    color:var(--dark);
+    font-size:2.3rem;
+}
+
+.gallery-title p{
+    color:#777;
+    margin-top:10px;
+}
+
+/* =====================================
+   GALERİ GRID (3 FOTOĞRAF DÜZENİ)
+===================================== */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:25px;
+}
+
+.gallery-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:20px;
+    height:350px;
+    background:#ddd;
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    cursor:pointer;
+    transition:transform .5s ease;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.06);
+}
+
+/* =====================================
+   LIGHTBOX
+===================================== */
+.lightbox{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:2000;
+    background:rgba(0,0,0,.92);
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+}
+
+.lightbox.active{
+    display:flex;
+}
+
+.lightbox-content{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    max-width:1000px;
+    max-height:90vh;
+    animation:lightboxAc .3s ease;
+}
+
+.lightbox-content img{
+    display:block;
+    max-width:85vw;
+    max-height:78vh;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    border-radius:15px;
+    box-shadow:0 20px 70px rgba(0,0,0,.6);
+    user-select:none;
+}
+
+/* Kapat Butonu */
+.lightbox-close{
+    position:absolute;
+    top:-50px;
+    right:0;
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:50%;
+    background:white;
+    color:#222;
+    font-size:22px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:.3s;
+    z-index:10;
+}
+
+.lightbox-close:hover{
+    background:var(--gold);
+    color:white;
+    transform:rotate(90deg);
+}
+
+/* İleri / Geri Butonları */
+.lightbox-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:48px;
+    height:48px;
+    background:rgba(255, 255, 255, 0.2);
+    border:1px solid rgba(255, 255, 255, 0.4);
+    color:white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    cursor:pointer;
+    backdrop-filter:blur(8px);
+    transition:all .3s ease;
+    z-index:10;
+}
+
+.lightbox-btn:hover{
+    background:var(--gold);
+    color:#14231c;
+    border-color:var(--gold);
+    transform:translateY(-50%) scale(1.1);
+}
+
+.lightbox-btn.prev{
+    left:-65px;
+}
+
+.lightbox-btn.next{
+    right:-65px;
+}
+
+/* Fotoğraf Sayacı (1 / 3) */
+.lightbox-counter{
+    position:absolute;
+    bottom:-38px;
+    color:#ddd;
+    font-size:0.9rem;
+    letter-spacing:1.5px;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+@keyframes lightboxAc{
+    from{
+        opacity:0;
+        transform:scale(.85);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* =====================================
+   GERİ DÖN
+===================================== */
+.back-section{
+    text-align:center;
+    padding:0 20px 100px;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:14px 28px;
+    background:var(--dark);
+    color:white;
+    text-decoration:none;
+    border-radius:50px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:var(--gold);
+    color:#222;
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(212,175,55,.25);
+}
+
+/* =====================================
+   FOOTER
+===================================== */
+.footer{
+    background:#111;
+    color:white;
+    padding:50px 20px;
+    text-align:center;
+}
+
+.footer p{
+    color:#aaa;
+    font-size:.9rem;
+}
+
+/* =====================================
+   MOBİL ALT MENÜ (MASAÜSTÜNDE GİZLİ)
+===================================== */
+.mobile-bottom-nav{
+    display:none;
+}
+
+/* =====================================
+   RESPONSIVE / TABLET
+===================================== */
+@media(max-width:992px){
+    .gallery{
+        grid-template-columns:repeat(2, 1fr);
+    }
+
+    .gallery-item:last-child{
+        grid-column:span 2;
+        max-width:500px;
+        width:100%;
+        margin:0 auto;
+    }
+
+    .lightbox-btn.prev{
+        left:10px;
+    }
+
+    .lightbox-btn.next{
+        right:10px;
+    }
+}
+
+/* =====================================
+   MOBİL (768px altı)
+===================================== */
+@media(max-width:768px){
+    .navbar{
+        top:15px;
+        width:92%;
+        height:55px;
+        padding:0 20px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .logo{
+        margin:auto;
+        font-size:1.45rem;
+        letter-spacing:2px;
+    }
+
+    .hero{
+        min-height:50vh;
+        padding:0 20px;
+        border-radius:0 0 30px 30px;
+    }
+
+    .hero-content{
+        width:100%;
+        padding:110px 10px 35px;
+    }
+
+    .hero small{
+        font-size:.85rem;
+        letter-spacing:2px;
+    }
+
+    .hero h1{
+        font-size:clamp(2rem,8vw,2.6rem);
+        line-height:1.2;
+        margin:12px 0 15px;
+    }
+
+    .hero p{
+        max-width:500px;
+        font-size:.95rem;
+        line-height:1.7;
+    }
+
+    .project-info{
+        padding:70px 5% 45px;
+    }
+
+    .project-info span{
+        font-size:.85rem;
+        letter-spacing:1px;
+    }
+
+    .project-info h2{
+        font-size:clamp(1.8rem,7vw,2.2rem);
+        line-height:1.25;
+        margin:10px 0 20px;
+    }
+
+    .project-info p{
+        font-size:.95rem;
+        line-height:1.8;
+    }
+
+    .gallery-section{
+        width:100%;
+        padding:20px 5% 70px;
+    }
+
+    .gallery-title{
+        margin-bottom:30px;
+    }
+
+    .gallery-title h2{
+        font-size:1.9rem;
+    }
+
+    .gallery-title p{
+        font-size:.9rem;
+        line-height:1.6;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .gallery-item,
+    .gallery-item:last-child{
+        grid-column:auto;
+        width:100%;
+        max-width:none;
+        height:260px;
+        border-radius:20px;
+    }
+
+    .gallery-item img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+    }
+
+    .gallery-item:hover img{
+        transform:none;
+    }
+
+    /* Lightbox Mobilde */
+    .lightbox{
+        padding:15px;
+    }
+
+    .lightbox-content{
+        width:100%;
+        max-width:100%;
+        max-height:85vh;
+    }
+
+    .lightbox-content img{
+        max-width:96vw;
+        max-height:68vh;
+        border-radius:12px;
+    }
+
+    .lightbox-close{
+        top:-48px;
+        right:5px;
+        width:38px;
+        height:38px;
+        font-size:18px;
+    }
+
+    .lightbox-btn{
+        width:40px;
+        height:40px;
+        font-size:16px;
+    }
+
+    .lightbox-btn.prev{
+        left:5px;
+    }
+
+    .lightbox-btn.next{
+        right:5px;
+    }
+
+    .lightbox-counter{
+        bottom:-32px;
+        font-size:0.8rem;
+    }
+
+    .back-section{
+        padding:0 20px 80px;
+    }
+
+    .btn{
+        padding:13px 25px;
+        font-size:.95rem;
+    }
+
+    .footer{
+        padding:45px 20px 120px;
+    }
+
+    .footer p{
+        font-size:.85rem;
+        line-height:1.7;
+    }
+
+    .mobile-bottom-nav{
+        display:grid;
+        grid-template-columns:repeat(4,1fr);
+        position:fixed;
+        left:50%;
+        bottom:15px;
+        transform:translateX(-50%);
+        width:calc(100% - 24px);
+        max-width:430px;
+        height:72px;
+        padding:7px 5px;
+        background:rgba(20,20,20,.96);
+        backdrop-filter:blur(18px);
+        -webkit-backdrop-filter:blur(18px);
+        border:1px solid rgba(255,255,255,.12);
+        border-radius:24px;
+        box-shadow:0 12px 35px rgba(0,0,0,.40);
+        z-index:99999;
+        overflow:hidden;
+    }
+
+    .mobile-bottom-nav a{
+        width:100%;
+        height:100%;
+        min-width:0;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        gap:4px;
+        color:#c7c7c7;
+        text-decoration:none;
+        font-family:"Segoe UI", Arial, sans-serif;
+        font-size:10px;
+        font-weight:500;
+        line-height:1;
+        white-space:nowrap;
+        overflow:hidden;
+        transition:color .25s ease, transform .25s ease;
+    }
+
+    .mobile-bottom-nav a span{
+        width:32px;
+        height:32px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        flex-shrink:0;
+        transition:transform .25s ease;
+    }
+
+    .mobile-bottom-nav .nav-icon{
+        display:block;
+        font-size:20px;
+        line-height:1;
+        color:#c7c7c7;
+        transition:color .25s ease, transform .25s ease;
+    }
+
+    .mobile-bottom-nav a:hover,
+    .mobile-bottom-nav a:active,
+    .mobile-bottom-nav a.active{
+        color:var(--gold);
+    }
+
+    .mobile-bottom-nav a:hover .nav-icon,
+    .mobile-bottom-nav a:active .nav-icon,
+    .mobile-bottom-nav a.active .nav-icon{
+        color:var(--gold);
+        transform:translateY(-2px);
+    }
+
+    .mobile-bottom-nav a.active span{
+        transform:translateY(-1px);
+    }
+}
+
+/* =====================================
+   ÇOK KÜÇÜK EKRANLAR
+===================================== */
+@media(max-width:380px){
+    .mobile-bottom-nav{
+        width:calc(100% - 16px);
+        height:68px;
+        bottom:10px;
+        border-radius:21px;
+        padding:6px 3px;
+    }
+
+    .mobile-bottom-nav a{
+        font-size:9px;
+        gap:3px;
+    }
+
+    .mobile-bottom-nav a span{
+        width:29px;
+        height:29px;
+    }
+
+    .mobile-bottom-nav .nav-icon{
+        font-size:18px;
+    }
+
+    .hero h1{
+        font-size:2.1rem;
+    }
+
+    .hero-content{
+        padding-top:100px;
+    }
+
+    .project-info{
+        padding:60px 20px 40px;
+    }
+
+    .project-info h2{
+        font-size:1.75rem;
+    }
+
+    .gallery-section{
+        padding:15px 16px 60px;
+    }
+
+    .gallery-item{
+        height:230px;
+        border-radius:17px;
+    }
+
+    .lightbox-content img{
+        max-width:94vw;
+        max-height:64vh;
+    }
+
+    .lightbox-close{
+        width:34px;
+        height:34px;
+        top:-44px;
+    }
+
+    .btn{
+        font-size:.9rem;
+        padding:12px 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <ul class="nav-links left">
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="hakkimizda.html">Hakkımızda</a></li>
+    </ul>
+
+    <div class="logo">Fırat İnşaat</div>
+
+    <ul class="nav-links right">
+        <li><a href="projeler.html">Projelerimiz</a></li>
+        <li><a href="iletisim.html">İletişim</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <small>KONUT PROJESİ</small>
+        <h1>Çekmeköy Projelerimiz</h1>
+        <p>Fırat İnşaat tarafından hayata geçirilen modern ve konforlu yaşam projelerimiz.</p>
+    </div>
+</section>
+
+<!-- PROJE BİLGİSİ -->
+<section class="project-info">
+    <span>PROJELER HAKKINDA</span>
+    <h2>Çekmeköy Projelerimiz</h2>
+    <p>
+        Modern mimari anlayış ile tasarlanan bu projeler, konforlu ve kaliteli yaşam alanları
+        oluşturmak amacıyla hayata geçirilmiştir. Projede estetik, dayanıklılık ve işlevsellik
+        bir arada düşünülmüş; çağdaş yaşam standartlarına uygun ferah ve kullanışlı alanlar oluşturulmuştur.
+    </p>
+</section>
+
+<!-- GALERİ (3 FOTOĞRAF) -->
+<section class="gallery-section">
+    <div class="gallery-title">
+        <h2>Proje Galerisi</h2>
+        <p>Projemizden görüntüler</p>
+    </div>
+
+    <div class="gallery">
+        <!-- FOTOĞRAF 1 -->
+        <div class="gallery-item">
+            <img src="projekapak1.jpg" alt="Çekmeköy Projesi - Görsel 1">
+        </div>
+
+        <!-- FOTOĞRAF 2 -->
+        <div class="gallery-item">
+            <img src="cekmekoy2.jpg" alt="Çekmeköy Projesi - Görsel 2">
+        </div>
+
+        <!-- FOTOĞRAF 3 -->
+        <div class="gallery-item">
+            <img src="cekmekoy3.jpeg" alt="Çekmeköy Projesi - Görsel 3">
+        </div>
+        <!-- FOTOĞRAF 4 -->
+        <div class="gallery-item">
+            <img src="cekmekoy.jpg" alt="Çekmeköy Projesi - Görsel 4">
+        </div>
+    </div>
+</section>
+
+<!-- GERİ DÖN -->
+<section class="back-section">
+    <a href="projeler.html" class="btn">
+        <i class="fa-solid fa-arrow-left"></i>
+        Projelere Dön
+    </a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>© 2026 Fırat İnşaat | Tüm Hakları Saklıdır.</p>
+</footer>
+
+<!-- MOBİL ALT MENÜ -->
+<nav class="mobile-bottom-nav">
+    <a href="index.html">
+        <span><i class="fa-solid fa-house nav-icon"></i></span>
+        <b>Ana Sayfa</b>
+    </a>
+    <a href="hakkimizda.html">
+        <span><i class="fa-solid fa-building nav-icon"></i></span>
+        <b>Hakkımızda</b>
+    </a>
+    <a href="projeler.html" class="active">
+        <span><i class="fa-solid fa-building nav-icon"></i></span>
+        <b>Projeler</b>
+    </a>
+    <a href="iletisim.html">
+        <span><i class="fa-solid fa-phone nav-icon"></i></span>
+        <b>İletişim</b>
+    </a>
+</nav>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+        <!-- Kapat Butonu -->
+        <button class="lightbox-close" id="lightboxClose" aria-label="Kapat">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <!-- Önceki Fotoğraf Butonu -->
+        <button class="lightbox-btn prev" id="lightboxPrev" aria-label="Önceki Görsel">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <!-- Büyük Fotoğraf -->
+        <img id="lightboxImage" src="" alt="Büyük Proje Görseli">
+
+        <!-- Sonraki Fotoğraf Butonu -->
+        <button class="lightbox-btn next" id="lightboxNext" aria-label="Sonraki Görsel">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <!-- Fotoğraf Sayacı -->
+        <div class="lightbox-counter" id="lightboxCounter">1 / 3</div>
+    </div>
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+const galleryImages = Array.from(document.querySelectorAll(".gallery-item img"));
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxClose = document.getElementById("lightboxClose");
+const lightboxPrev = document.getElementById("lightboxPrev");
+const lightboxNext = document.getElementById("lightboxNext");
+const lightboxCounter = document.getElementById("lightboxCounter");
+
+let currentIndex = 0;
+
+// Görseli güncelleme fonksiyonu
+function updateLightboxImage(index) {
+    currentIndex = index;
+    lightboxImage.src = galleryImages[currentIndex].src;
+    lightboxImage.alt = galleryImages[currentIndex].alt;
+    lightboxCounter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
+}
+
+// Görsellere tıklama
+galleryImages.forEach((image, index) => {
+    image.addEventListener("click", () => {
+        updateLightboxImage(index);
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+    });
+});
+
+// Sonraki görsel
+function showNextImage() {
+    currentIndex = (currentIndex + 1) % galleryImages.length;
+    updateLightboxImage(currentIndex);
+}
+
+// Önceki görsel
+function showPrevImage() {
+    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+    updateLightboxImage(currentIndex);
+}
+
+// Lightbox kapatma
+function closeLightbox(){
+    lightbox.classList.remove("active");
+    document.body.style.overflow = "";
+    lightboxImage.src = "";
+}
+
+// Olay dinleyicileri
+lightboxNext.addEventListener("click", (e) => {
+    e.stopPropagation();
+    showNextImage();
+});
+
+lightboxPrev.addEventListener("click", (e) => {
+    e.stopPropagation();
+    showPrevImage();
+});
+
+lightboxClose.addEventListener("click", closeLightbox);
+
+// Dış siyah alana tıklayınca kapatma
+lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+        closeLightbox();
+    }
+});
+
+// Klavye kontrolleri (Esc: Kapat, Oklar: İleri/Geri)
+document.addEventListener("keydown", (event) => {
+    if (!lightbox.classList.contains("active")) return;
+
+    if (event.key === "Escape") {
+        closeLightbox();
+    } else if (event.key === "ArrowRight") {
+        showNextImage();
+    } else if (event.key === "ArrowLeft") {
+        showPrevImage();
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fırat İnşaat | Geleceği İnşa Ediyoruz</title>
+
+<meta name="description" content="Fırat İnşaat; güvenli, modern ve kaliteli konut, villa ve ticari yapı projeleri üretir.">
+<meta name="theme-color" content="#1C3026">
+
+<link rel="icon" href="Firat Insaat Logo.png">
+<link rel="apple-touch-icon" href="Firat Insaat Logo.png">
+
+<meta property="og:title" content="Fırat İnşaat">
+<meta property="og:description" content="Güvenli ve modern yapılar inşa ediyoruz.">
+<meta property="og:image" content="Firat Insaat Logo.png">
+<meta property="og:type" content="website">
+
+<!-- FONT AWESOME -->
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+>
+
+<style>
+
+/* =====================================
+   GENEL
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Times New Roman", Times, serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #fff5f7;
+    animation: pageFade 1s ease;
+}
+
+
+/* =====================================
+   NAVBAR
+===================================== */
+
+.navbar {
+    position: fixed;
+
+    top: 20px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 90%;
+    max-width: 1100px;
+
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 40px;
+
+    background: rgba(15, 23, 42, 0.45);
+
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 32px
+        rgba(0,0,0,0.25);
+
+    z-index: 1000;
+}
+
+
+.nav-links {
+    display: flex;
+
+    list-style: none;
+
+    gap: 35px;
+
+    width: 35%;
+}
+
+
+.nav-links.left {
+    justify-content: flex-start;
+}
+
+
+.nav-links.right {
+    justify-content: flex-end;
+}
+
+
+.nav-links a {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 1rem;
+
+    font-weight: 500;
+
+    transition: 0.3s;
+
+    text-shadow:
+        0 2px 10px
+        rgba(0,0,0,0.4);
+}
+
+
+.nav-links a:hover {
+    color: #00d4ff;
+}
+
+
+.logo {
+    font-size: 2.2rem;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    color: #fff;
+}
+
+
+/* =====================================
+   HERO
+===================================== */
+
+.hero {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: flex-start;
+
+    text-align: left;
+
+    padding-left: 5%;
+
+    color: white;
+}
+
+
+.hero-content {
+    max-width: 800px;
+
+    padding: 0 20px;
+
+    color: rgb(255,255,255);
+
+    z-index: 1;
+
+    margin-bottom: 100px;
+}
+
+
+.hero-title {
+    margin-bottom: 20px;
+}
+
+
+.hero-subtitle {
+    margin-bottom: 30px;
+
+    line-height: 1.6;
+}
+
+
+.hero-button {
+    display: inline-block;
+
+    padding: 10px 30px;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    color: rgb(0,0,0);
+
+    background: #ff9100;
+
+    text-decoration: none;
+
+    border: none;
+
+    border-radius: 100px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.hero-button:hover {
+    background: #e68200;
+}
+
+
+/* =====================================
+   SLIDER
+===================================== */
+
+.slider {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: -1;
+}
+
+
+.slide {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    opacity: 0;
+
+    transition: 1s ease-in-out;
+
+    filter: brightness(0.6);
+}
+
+
+.slide.active {
+    opacity: 1;
+}
+
+
+.dots {
+    position: absolute;
+
+    bottom: 30px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    gap: 10px;
+}
+
+
+.dot {
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.4);
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.dot.active {
+    background: white;
+
+    transform: scale(1.2);
+}
+
+
+/* =====================================
+   İÇERİK
+===================================== */
+
+.content {
+    min-height: 90vh;
+
+    padding: 120px 10%;
+}
+
+
+.content.light {
+    background: #fff5f7;
+
+    color: #222;
+
+    min-height: 90vh;
+}
+
+
+.content.dark {
+    background: #26150d;
+
+    color: white;
+
+    border-radius: 30px;
+}
+
+
+.content.gray {
+    background: #fff5f7;
+
+    color: #222;
+}
+
+
+.content h2 {
+    font-size: 3rem;
+
+    margin-bottom: 25px;
+}
+
+
+.content p {
+    font-size: 1.1rem;
+
+    line-height: 1.9;
+
+    max-width: 900px;
+}
+
+
+/* =====================================
+   HAKKIMIZDA
+===================================== */
+
+.about-container {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 50px;
+}
+
+
+.about-container img {
+    width: 450px;
+
+    border-radius: 12px;
+}
+
+
+.about-text {
+    flex: 1;
+}
+
+
+.about-text h2 {
+    font-size: 2.5rem;
+
+    color: #1C3026;
+
+    margin-bottom: 20px;
+}
+
+
+.about-text p {
+    font-size: 1.1rem;
+
+    line-height: 1.8;
+
+    color: #444;
+}
+
+
+/* =====================================
+   HİZMETLER
+===================================== */
+
+.services-container {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 60px;
+}
+
+
+.services-text {
+    flex: 1;
+}
+
+
+.services-text h2 {
+    margin-bottom: 20px;
+}
+
+
+.services-text p {
+    line-height: 1.8;
+
+    font-size: 1.1rem;
+}
+
+
+.services-image {
+    flex: 1;
+
+    display: flex;
+
+    justify-content: flex-end;
+}
+
+
+.services-image img {
+    width: 100%;
+
+    max-width: 350px;
+
+    border-radius: 20px;
+}
+
+
+/* =====================================
+   PROJELER
+===================================== */
+
+.projects-container {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 40px;
+
+    margin-top: 50px;
+
+    flex-wrap: wrap;
+}
+
+
+.project-card {
+    width: 300px;
+
+    background: #fff5f7;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    text-decoration: none;
+
+    color: #1C3026;
+
+    box-shadow:
+        0 10px 25px
+        rgba(0,0,0,.15);
+
+    transition: .3s;
+}
+
+
+.project-card:hover {
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 20px 40px
+        rgba(0,0,0,.25);
+}
+
+
+.project-card img {
+    width: 100%;
+
+    height: 220px;
+
+    object-fit: cover;
+}
+
+
+.project-card h3 {
+    padding: 20px;
+
+    text-align: center;
+}
+
+
+.ex {
+    text-align: center;
+
+    width: 100%;
+
+    margin-bottom: 40px;
+}
+
+
+/* =====================================
+   FOOTER
+===================================== */
+
+.footer {
+    background: #1c1c1c;
+
+    color: #fff;
+
+    padding:
+        60px 10% 20px;
+
+    margin-top: 60px;
+}
+
+
+.footer-container {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 50px;
+
+    flex-wrap: wrap;
+}
+
+
+.footer-logo,
+.footer-links,
+.footer-contact {
+    flex: 1;
+
+    min-width: 220px;
+}
+
+
+.footer h2,
+.footer h3 {
+    margin-bottom: 20px;
+}
+
+
+.footer p {
+    color: #d1d5db;
+
+    line-height: 1.8;
+}
+
+
+.footer-links {
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.footer-links a {
+    color: #d1d5db;
+
+    text-decoration: none;
+
+    margin-bottom: 12px;
+
+    transition: .3s;
+}
+
+
+.footer-links a:hover {
+    color: #D4AF37;
+}
+
+
+.footer-bottom {
+    margin-top: 40px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.15);
+
+    text-align: center;
+
+    color: #9ca3af;
+}
+
+
+/* =====================================
+   ANİMASYONLAR
+===================================== */
+
+@keyframes pageFade {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+/* =====================================
+   MOBİL ALT NAVBAR
+   MASAÜSTÜNDE GİZLİ
+===================================== */
+
+.mobile-bottom-nav {
+    display: none;
+}
+
+
+/* =====================================
+   MOBİL
+===================================== */
+
+@media (max-width:768px) {
+
+
+    /* =================================
+       MASAÜSTÜ NAVBAR GİZLE
+    ================================= */
+
+    .nav-links {
+        display: none;
+    }
+
+
+    .logo {
+        margin: auto;
+
+        font-size: 1.6rem;
+    }
+
+
+    /* =================================
+       HERO
+    ================================= */
+
+    .hero {
+
+        height: 100dvh;
+
+        padding:
+            0 20px;
+
+        justify-content: center;
+
+        align-items: flex-end;
+
+        text-align: center;
+    }
+
+
+    .hero-content {
+
+        width: 100%;
+
+        max-width: 360px;
+
+        margin-bottom: 80px;
+
+        padding: 0;
+    }
+
+
+    .hero-content h1 {
+
+        font-size: 1.65rem;
+
+        line-height: 1.2;
+
+        margin-bottom: 12px;
+    }
+
+
+    .hero-subtitle {
+
+        font-size: 0.78rem;
+
+        line-height: 1.5;
+
+        margin-bottom: 18px;
+    }
+
+
+    .hero-button {
+
+        padding:
+            8px 24px;
+
+        font-size: 0.82rem;
+    }
+
+
+    .slide {
+
+        object-position: center;
+    }
+
+
+    /* =================================
+       İÇERİK
+    ================================= */
+
+    .content {
+        padding:
+            80px 6%;
+    }
+
+
+    .about-container {
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+
+    .about-container img {
+
+        width: 100%;
+
+        max-width: 400px;
+    }
+
+
+    .services-container {
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+
+    .services-image {
+
+        justify-content: center;
+    }
+
+
+    .projects-container {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 25px;
+    }
+
+
+    .project-card {
+
+        width: 90%;
+
+        max-width: 350px;
+    }
+
+
+    .project-card img {
+
+        height: 200px;
+    }
+
+
+    .content.gray h2 {
+
+        text-align: center;
+    }
+
+
+    .footer-container {
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+
+    .footer {
+
+        padding-bottom: 120px;
+    }
+
+
+    /* =================================
+       MOBİL ALT NAVBAR
+       İLETİŞİM SAYFASINDAKİ YAPI
+       İLE AYNI
+    ================================= */
+
+    .mobile-bottom-nav {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(4, 1fr);
+
+        position: fixed;
+
+        left: 50%;
+
+        bottom: 15px;
+
+        transform:
+            translateX(-50%);
+
+        width:
+            calc(100% - 24px);
+
+        max-width: 430px;
+
+        height: 72px;
+
+        padding:
+            7px 5px;
+
+        background:
+            rgba(20,20,20,0.96);
+
+        backdrop-filter:
+            blur(18px);
+
+        -webkit-backdrop-filter:
+            blur(18px);
+
+        border:
+            1px solid
+            rgba(255,255,255,0.12);
+
+        border-radius: 24px;
+
+        box-shadow:
+            0 12px 35px
+            rgba(0,0,0,0.40);
+
+        z-index: 99999;
+
+        overflow: hidden;
+    }
+
+
+    /* =================================
+       MENÜ LİNKLERİ
+    ================================= */
+
+    .mobile-bottom-nav a {
+
+        width: 100%;
+
+        height: 100%;
+
+        min-width: 0;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 4px;
+
+        color: #c7c7c7;
+
+        text-decoration: none;
+
+        font-family:
+            "Segoe UI",
+            Arial,
+            sans-serif;
+
+        font-size: 10px;
+
+        font-weight: 500;
+
+        line-height: 1;
+
+        white-space: nowrap;
+
+        overflow: hidden;
+
+        transition:
+            color .25s ease,
+            transform .25s ease;
+
+        -webkit-tap-highlight-color:
+            transparent;
+    }
+
+
+    /* =================================
+       İKON ALANI
+    ================================= */
+
+    .mobile-bottom-nav a span {
+
+        width: 32px;
+
+        height: 32px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        flex-shrink: 0;
+
+        transition:
+            transform .25s ease;
+    }
+
+
+    /* =================================
+       FONT AWESOME İKON
+    ================================= */
+
+    .mobile-bottom-nav .nav-icon {
+
+        display: block;
+
+        width: auto;
+
+        height: auto;
+
+        font-size: 20px;
+
+        line-height: 1;
+
+        color: #c7c7c7;
+
+        transition:
+            color .25s ease,
+            transform .25s ease;
+    }
+
+
+    /* =================================
+       AKTİF / HOVER
+    ================================= */
+
+    .mobile-bottom-nav a:hover,
+    .mobile-bottom-nav a:active,
+    .mobile-bottom-nav a.active {
+
+        color: #D4AF37;
+    }
+
+
+    .mobile-bottom-nav a:hover .nav-icon,
+    .mobile-bottom-nav a:active .nav-icon,
+    .mobile-bottom-nav a.active .nav-icon {
+
+        color: #D4AF37;
+
+        transform:
+            translateY(-2px);
+    }
+
+
+    /* =================================
+       AKTİF BUTON
+       ANA SAYFA
+    ================================= */
+
+    .mobile-bottom-nav a.active span {
+
+        transform:
+            translateY(-1px);
+    }
+
+
+    /* =================================
+       TÜM İKONLAR AYNI BOY
+    ================================= */
+
+    .mobile-bottom-nav a:nth-child(1) .nav-icon,
+    .mobile-bottom-nav a:nth-child(2) .nav-icon,
+    .mobile-bottom-nav a:nth-child(3) .nav-icon,
+    .mobile-bottom-nav a:nth-child(4) .nav-icon {
+
+        font-size: 20px;
+    }
+
+}
+
+
+/* =====================================
+   KÜÇÜK TELEFON
+===================================== */
+
+@media (max-width:380px) {
+
+
+    .mobile-bottom-nav {
+
+        width:
+            calc(100% - 16px);
+
+        height: 68px;
+
+        bottom: 10px;
+
+        border-radius: 21px;
+
+        padding:
+            6px 3px;
+    }
+
+
+    .mobile-bottom-nav a {
+
+        font-size: 9px;
+
+        gap: 3px;
+    }
+
+
+    .mobile-bottom-nav a span {
+
+        width: 29px;
+
+        height: 29px;
+    }
+
+
+    .mobile-bottom-nav .nav-icon {
+
+        font-size: 18px;
+    }
+
+
+    .logo {
+
+        font-size: 1.3rem;
+    }
+
+
+    .hero-content {
+
+        max-width: 320px;
+
+        margin-bottom: 75px;
+    }
+
+
+    .hero-content h1 {
+
+        font-size: 1.45rem;
+
+        line-height: 1.15;
+    }
+
+
+    .hero-subtitle {
+
+        font-size: .72rem;
+
+        line-height: 1.45;
+    }
+
+
+    .hero-button {
+
+        padding:
+            7px 20px;
+
+        font-size: .78rem;
+    }
+
+}
+
+
+/* =====================================
+   ÇOK KÜÇÜK TELEFON
+===================================== */
+
+@media (max-width:330px) {
+
+
+    .mobile-bottom-nav {
+
+        height: 63px;
+    }
+
+
+    .mobile-bottom-nav a {
+
+        font-size: .5rem;
+    }
+
+
+    .mobile-bottom-nav a span {
+
+        width: 25px;
+
+        height: 25px;
+    }
+
+
+    .mobile-bottom-nav .nav-icon {
+
+        font-size: 17px;
+    }
+
+
+    .hero-content {
+
+        max-width: 290px;
+
+        margin-bottom: 70px;
+    }
+
+
+    .hero-content h1 {
+
+        font-size: 1.3rem;
+    }
+
+
+    .hero-subtitle {
+
+        font-size: .68rem;
+
+        line-height: 1.4;
+    }
+
+
+    .hero-button {
+
+        padding:
+            6px 18px;
+
+        font-size: .72rem;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     MASAÜSTÜ NAVBAR
+===================================== -->
+
+<nav class="navbar">
+
+    <ul class="nav-links left">
+
+        <li>
+            <a href="index.html">
+                Ana Sayfa
+            </a>
+        </li>
+
+        <li>
+            <a href="hakkimizda.html">
+                Hakkımızda
+            </a>
+        </li>
+
+    </ul>
+
+
+    <div class="logo">
+        Fırat İnşaat
+    </div>
+
+
+    <ul class="nav-links right">
+
+        <li>
+            <a href="projeler.html">
+                Projelerimiz
+            </a>
+        </li>
+
+        <li>
+            <a href="iletisim.html">
+                İletişim
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =====================================
+     HERO
+===================================== -->
+
+<section class="hero" id="home">
+
+
+    <div class="slider">
+
+
+        <img
+            src="bina.jpeg"
+            class="slide active"
+            alt="Bina Görseli"
+        >
+
+
+        <img
+            src="bina2.jpeg"
+            class="slide"
+            alt="Bina Görseli"
+        >
+
+
+        <img
+            src="apartman.jpeg"
+            class="slide"
+            alt="Apartman Görseli"
+        >
+
+
+    </div>
+
+
+    <div class="hero-content">
+
+
+        <h1 class="hero-title">
+
+            Güvenli ve Modern Yapılar İnşa Ediyoruz
+
+        </h1>
+
+
+        <p class="hero-subtitle">
+
+            Fırat İnşaat olarak, yılların verdiği
+            tecrübe ile hayallerinizdeki yaşam
+            alanlarını kalite ve güvenle hayata
+            geçiriyoruz. Sağlam temeller,
+            mutlu yarınlar.
+
+        </p>
+
+
+        <a
+            href="projeler.html"
+            class="hero-button"
+        >
+
+            Detaylar
+
+        </a>
+
+
+    </div>
+
+
+    <div class="dots">
+
+
+        <span
+            class="dot active"
+            data-index="0"
+        ></span>
+
+
+        <span
+            class="dot"
+            data-index="1"
+        ></span>
+
+
+        <span
+            class="dot"
+            data-index="2"
+        ></span>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================
+     HAKKIMIZDA
+===================================== -->
+
+<section
+    class="content light"
+    id="about"
+>
+
+
+    <div class="about-container">
+
+
+        <img
+            src="cekmekoy2.jpg"
+            alt="Fırat İnşaat"
+
+            style="
+                width:100%;
+                max-width:610px;
+                margin-bottom:20px;
+                border-radius:20px;
+            "
+        >
+
+
+        <div class="about-text">
+
+            <h2>
+                İstanbul Çekmeköy Projesi
+            </h2>
+
+
+            <p>
+
+                Modern mimarisi ve yenilikçi
+                tasarımıyla öne çıkan Çekmeköy
+                projemizin tüm detaylarını keşfedin.
+                Estetik ve konforu bir araya getiren
+                yeni yaşam alanımızın proje
+                çizimlerine göz atın.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================
+     HİZMETLER
+===================================== -->
+
+<section
+    class="content dark"
+    id="services"
+>
+
+
+    <div class="services-container">
+
+
+        <div class="services-text">
+
+
+            <h2>
+                İstanbul Bostancı Projemiz
+            </h2>
+
+
+            <p>
+                Sahiplerine başarıyla teslim edilen Bostancı projemiz, modern mimarisi, kaliteli işçiliği ve konfor odaklı yaşam alanlarıyla yeni sakinlerini ağırlamaya hazır. Projenin her detayında estetik, işlevsellik ve yaşam kalitesini bir araya getirerek, beklentilerin ötesinde bir yaşam alanı oluşturduk.
+
+            </p>
+
+
+        </div>
+
+
+        <div class="services-image">
+
+
+            <img
+                src="bostanci.jpeg"
+                alt="Hizmetler"
+            >
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================
+     PROJELER
+===================================== -->
+
+<section
+    class="content gray"
+    id="contact"
+>
+
+
+    <h2 class="ex">
+        Projeler
+    </h2>
+
+
+    <div class="projects-container">
+
+
+        <a
+            href="projectone.html"
+            class="project-card"
+        >
+
+
+            <img
+                src="projekapak1.jpg"
+                alt="Proje 1"
+            >
+
+
+            <h3>
+                Çekmeköy Projelerimiz
+            </h3>
+
+
+        </a>
+
+
+        <a
+            href="projecttwo.html"
+            class="project-card"
+        >
+
+
+            <img
+                src="giris1.jpg"
+                alt="Proje 2"
+            >
+
+
+            <h3>
+                Üsküdar Projelerimiz
+            </h3>
+
+
+        </a>
+
+
+        <a
+            href="projectthree.html"
+            class="project-card"
+        >
+
+
+            <img
+                src="atasehir3.jpg"
+                alt="Proje 3"
+            >
+
+
+            <h3>
+                Ataşehir Projelerimiz
+            </h3>
+
+
+        </a>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<footer class="footer">
+
+
+    <div class="footer-container">
+
+
+        <div class="footer-logo">
+
+
+            <h2>
+                Fırat İnşaat
+            </h2>
+
+
+            <p>
+                Güvenli ve Modern Yapılar
+                İnşa Ediyoruz.
+            </p>
+
+
+        </div>
+
+
+        <div class="footer-links">
+
+
+            <h3>
+                Hızlı Menü
+            </h3>
+
+
+            <a href="index.html">
+                Ana Sayfa
+            </a>
+
+
+            <a href="hakkimizda.html">
+                Hakkımızda
+            </a>
+
+
+            <a href="projeler.html">
+                Projelerimiz
+            </a>
+
+
+            <a href="iletisim.html">
+                İletişim
+            </a>
+
+
+        </div>
+
+
+        <div class="footer-contact">
+
+
+            <h3>
+                İletişim
+            </h3>
+
+
+            <p>
+                📍 İstanbul, Türkiye
+            </p>
+
+
+            <p>
+                📞 +90 532 546 04 59
+            </p>
+
+
+            <p>
+                ✉️ firatyapi.insaat@gmail.com
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 Fırat İnşaat |
+        Tüm Hakları Saklıdır.
+
+    </div>
+
+
+</footer>
+
+
+<!-- =====================================
+     MOBİL ALT NAVBAR
+     İLETİŞİM SAYFASINDAKİYLE AYNI
+     ANA SAYFA AKTİF
+===================================== -->
+
+<nav class="mobile-bottom-nav">
+
+
+    <!-- ANA SAYFA - AKTİF -->
+
+    <a
+        href="index.html"
+        class="active"
+    >
+
+        <span>
+
+            <i class="fa-solid fa-house nav-icon"></i>
+
+        </span>
+
+
+        <b>
+            Ana Sayfa
+        </b>
+
+    </a>
+
+
+    <!-- HAKKIMIZDA -->
+
+    <a
+        href="hakkimizda.html"
+    >
+
+        <span>
+
+            <i class="fa-solid fa-building nav-icon"></i>
+
+        </span>
+
+
+        <b>
+            Hakkımızda
+        </b>
+
+    </a>
+
+
+    <!-- PROJELER -->
+
+    <a
+        href="projeler.html"
+    >
+
+        <span>
+
+            <i class="fa-solid fa-building nav-icon"></i>
+
+        </span>
+
+
+        <b>
+            Projeler
+        </b>
+
+    </a>
+
+
+    <!-- İLETİŞİM -->
+
+    <a
+        href="iletisim.html"
+    >
+
+        <span>
+
+            <i class="fa-solid fa-phone nav-icon"></i>
+
+        </span>
+
+
+        <b>
+            İletişim
+        </b>
+
+    </a>
+
+
+</nav>
+
+
+<!-- =====================================
+     SLIDER JAVASCRIPT
+===================================== -->
+
+<script>
+
+let index = 0;
+
+
+const slides =
+    document.querySelectorAll(".slide");
+
+
+const dots =
+    document.querySelectorAll(".dot");
+
+
+function showSlide(i) {
+
+
+    if (slides.length === 0) {
+
+        return;
+
+    }
+
+
+    slides[index]
+        .classList
+        .remove("active");
+
+
+    if (dots[index]) {
+
+        dots[index]
+            .classList
+            .remove("active");
+
+    }
+
+
+    index = i;
+
+
+    slides[index]
+        .classList
+        .add("active");
+
+
+    if (dots[index]) {
+
+        dots[index]
+            .classList
+            .add("active");
+
+    }
+
+}
+
+
+dots.forEach(dot => {
+
+
+    dot.addEventListener(
+        "click",
+        () => {
+
+            showSlide(
+                parseInt(
+                    dot.dataset.index
+                )
+            );
+
+        }
+    );
+
+
+});
+
+
+setInterval(() => {
+
+
+    if (slides.length > 0) {
+
+
+        let next =
+            (index + 1) %
+            slides.length;
+
+
+        showSlide(next);
+
+
+    }
+
+
+}, 3000);
+
+</script>
+
+
+</body>
+
+</html>
