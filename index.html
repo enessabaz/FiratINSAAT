@@ -449,74 +449,87 @@ body {
 
 
 /* =====================================
-   PROJELER
+   PROJELER (DÜZENLENEN ALAN)
 ===================================== */
-
-.projects-container {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 40px;
-
-    margin-top: 50px;
-
-    flex-wrap: wrap;
-}
-
-
-.project-card {
-    width: 300px;
-
-    background: #fff5f7;
-
-    border-radius: 15px;
-
-    overflow: hidden;
-
-    text-decoration: none;
-
-    color: #1C3026;
-
-    box-shadow:
-        0 10px 25px
-        rgba(0,0,0,.15);
-
-    transition: .3s;
-}
-
-
-.project-card:hover {
-    transform: translateY(-10px);
-
-    box-shadow:
-        0 20px 40px
-        rgba(0,0,0,.25);
-}
-
-
-.project-card img {
-    width: 100%;
-
-    height: 220px;
-
-    object-fit: cover;
-}
-
-
-.project-card h3 {
-    padding: 20px;
-
-    text-align: center;
-}
-
 
 .ex {
     text-align: center;
-
     width: 100%;
+    margin-bottom: 50px;
+}
 
-    margin-bottom: 40px;
+.projects-container {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    flex-wrap: wrap;
+}
+
+.project-card {
+    width: 320px;
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #1C3026;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-box {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.card-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover .card-img-box img {
+    transform: scale(1.06);
+}
+
+.card-content {
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.project-card h3 {
+    font-size: 1.35rem;
+    color: #1C3026;
+    text-align: center;
+    margin: 0;
+}
+
+.card-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #ff9100;
+    font-size: 0.95rem;
+    font-weight: bold;
+    transition: gap 0.25s ease, color 0.25s ease;
+}
+
+.project-card:hover .card-btn {
+    color: #e68200;
+    gap: 12px;
 }
 
 
@@ -781,12 +794,6 @@ body {
     }
 
 
-    .project-card img {
-
-        height: 200px;
-    }
-
-
     .content.gray h2 {
 
         text-align: center;
@@ -809,8 +816,6 @@ body {
 
     /* =================================
        MOBİL ALT NAVBAR
-       İLETİŞİM SAYFASINDAKİ YAPI
-       İLE AYNI
     ================================= */
 
     .mobile-bottom-nav {
@@ -986,7 +991,6 @@ body {
 
     /* =================================
        AKTİF BUTON
-       ANA SAYFA
     ================================= */
 
     .mobile-bottom-nav a.active span {
@@ -1414,7 +1418,7 @@ body {
 
 
 <!-- =====================================
-     PROJELER
+     PROJELER (SADECE KUTULAR YENİLENDİ)
 ===================================== -->
 
 <section
@@ -1435,19 +1439,21 @@ body {
             href="projectone.html"
             class="project-card"
         >
+            <div class="card-img-box">
+                <img
+                    src="projekapak1.jpg"
+                    alt="Çekmeköy Projelerimiz"
+                >
+            </div>
 
-
-            <img
-                src="projekapak1.jpg"
-                alt="Proje 1"
-            >
-
-
-            <h3>
-                Çekmeköy Projelerimiz
-            </h3>
-
-
+            <div class="card-content">
+                <h3>
+                    Çekmeköy Projelerimiz
+                </h3>
+                <span class="card-btn">
+                    Detaylar İçin Tıklayınız <i class="fa-solid fa-arrow-right"></i>
+                </span>
+            </div>
         </a>
 
 
@@ -1455,19 +1461,21 @@ body {
             href="projecttwo.html"
             class="project-card"
         >
+            <div class="card-img-box">
+                <img
+                    src="giris1.jpg"
+                    alt="Üsküdar Projelerimiz"
+                >
+            </div>
 
-
-            <img
-                src="giris1.jpg"
-                alt="Proje 2"
-            >
-
-
-            <h3>
-                Üsküdar Projelerimiz
-            </h3>
-
-
+            <div class="card-content">
+                <h3>
+                    Üsküdar Projelerimiz
+                </h3>
+                <span class="card-btn">
+                    Detaylar İçin Tıklayınız <i class="fa-solid fa-arrow-right"></i>
+                </span>
+            </div>
         </a>
 
 
@@ -1475,19 +1483,21 @@ body {
             href="projectthree.html"
             class="project-card"
         >
+            <div class="card-img-box">
+                <img
+                    src="atasehir3.jpg"
+                    alt="Ataşehir Projelerimiz"
+                >
+            </div>
 
-
-            <img
-                src="atasehir3.jpg"
-                alt="Proje 3"
-            >
-
-
-            <h3>
-                Ataşehir Projelerimiz
-            </h3>
-
-
+            <div class="card-content">
+                <h3>
+                    Ataşehir Projelerimiz
+                </h3>
+                <span class="card-btn">
+                    Detaylar İçin Tıklayınız <i class="fa-solid fa-arrow-right"></i>
+                </span>
+            </div>
         </a>
 
 
@@ -1597,8 +1607,6 @@ body {
 
 <!-- =====================================
      MOBİL ALT NAVBAR
-     İLETİŞİM SAYFASINDAKİYLE AYNI
-     ANA SAYFA AKTİF
 ===================================== -->
 
 <nav class="mobile-bottom-nav">
